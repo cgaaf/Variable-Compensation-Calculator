@@ -1,5 +1,5 @@
 //
-//  AcademicSection.swift
+//  ClinicalSection.swift
 //  Variable Compensation Calculator
 //
 //  Created by Chris Gaafary on 10/18/23.
@@ -7,22 +7,24 @@
 
 import SwiftUI
 
-struct AcademicSection: View {
-    @Bindable private var model: AcademicProductivityModel
+struct ClinicalSection: View {
+    @Bindable private var model: ClinicalProductivityModel
     
-    init(model: AcademicProductivityModel) {
+    init(model: ClinicalProductivityModel) {
         self.model = model
     }
     
+
+    
     var body: some View {
         Section {
-            LabeledContent("Academic RVUs") {
-                TextField("Academic RVUs", value: $model.academicRVUs, format: .number, prompt: Text("aRVUs"))
+            LabeledContent("Market Percentile") {
+                TextField("Market Percentile", value: $model.rvuPercentile, format: .number, prompt: Text("Percentile"))
                     .multilineTextAlignment(.trailing)
             }
             
             VStack(alignment: .leading) {
-                LabeledContent("Points Earned", value: model.academicPoints, format: .number)
+                LabeledContent("Points Earned", value: model.clinicalPoints, format: .number)
                 if let prompt = model.prompt {
                     Text(prompt)
                         .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
@@ -44,16 +46,13 @@ struct AcademicSection: View {
             }
             
         } header: {
-            Text("Academic Productivity")
+            Text("Clinical Productivity")
         }
     }
 }
 
 #Preview {
     Form {
-        AcademicSection(model: .init())
-        AcademicSection(model: .init(initialAcademicRVUs: 25))
-        AcademicSection(model: .init(initialAcademicRVUs: 46))
-        AcademicSection(model: .init(initialAcademicRVUs: 0))
+        ClinicalSection(model: .init())
     }
 }

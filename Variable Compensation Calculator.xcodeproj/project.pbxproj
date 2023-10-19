@@ -15,6 +15,12 @@
 		C25E7E942AE051EE005615D1 /* AcademicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7E932AE051EE005615D1 /* AcademicSection.swift */; };
 		C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */; };
 		C2BCAC222AE063EC00CA2C31 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC212AE063EC00CA2C31 /* CalculatorModel.swift */; };
+		C2BCAC242AE0B1E000CA2C31 /* ClinicalProductivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */; };
+		C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */; };
+		C2BCAC282AE1806600CA2C31 /* VacationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC272AE1806600CA2C31 /* VacationModel.swift */; };
+		C2BCAC2C2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */; };
+		C2BCAC2E2AE1817B00CA2C31 /* WARActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2D2AE1817B00CA2C31 /* WARActivityModel.swift */; };
+		C2BCAC302AE18C8800CA2C31 /* SocialProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +33,12 @@
 		C25E7E932AE051EE005615D1 /* AcademicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicSection.swift; sourceTree = "<group>"; };
 		C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicProductivityModel.swift; sourceTree = "<group>"; };
 		C2BCAC212AE063EC00CA2C31 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
+		C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalProductivityModel.swift; sourceTree = "<group>"; };
+		C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalSection.swift; sourceTree = "<group>"; };
+		C2BCAC272AE1806600CA2C31 /* VacationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationModel.swift; sourceTree = "<group>"; };
+		C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessAndResiliencySection.swift; sourceTree = "<group>"; };
+		C2BCAC2D2AE1817B00CA2C31 /* WARActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WARActivityModel.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Records/WARActivityModel.swift"; sourceTree = "<group>"; };
+		C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProgressModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +93,12 @@
 			isa = PBXGroup;
 			children = (
 				C25E7E8E2ADF1AD3005615D1 /* CalculatorViewModel.swift */,
-				C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */,
 				C2BCAC212AE063EC00CA2C31 /* CalculatorModel.swift */,
+				C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */,
+				C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */,
+				C2BCAC272AE1806600CA2C31 /* VacationModel.swift */,
+				C2BCAC2D2AE1817B00CA2C31 /* WARActivityModel.swift */,
+				C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -91,6 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				C25E7E932AE051EE005615D1 /* AcademicSection.swift */,
+				C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */,
+				C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -165,10 +183,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BCAC242AE0B1E000CA2C31 /* ClinicalProductivityModel.swift in Sources */,
+				C2BCAC2E2AE1817B00CA2C31 /* WARActivityModel.swift in Sources */,
 				C25E7E942AE051EE005615D1 /* AcademicSection.swift in Sources */,
+				C2BCAC282AE1806600CA2C31 /* VacationModel.swift in Sources */,
 				C200F59D2ACB900500601221 /* ContentView.swift in Sources */,
+				C2BCAC302AE18C8800CA2C31 /* SocialProgressModel.swift in Sources */,
 				C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */,
+				C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */,
 				C2BCAC222AE063EC00CA2C31 /* CalculatorModel.swift in Sources */,
+				C2BCAC2C2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift in Sources */,
 				C25E7E8F2ADF1AD3005615D1 /* CalculatorViewModel.swift in Sources */,
 				C200F59B2ACB900500601221 /* Variable_Compensation_CalculatorApp.swift in Sources */,
 			);

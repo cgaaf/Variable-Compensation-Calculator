@@ -26,8 +26,6 @@ class AcademicProductivityModel {
         return _points
     }
     
-    let label = "aRVUs/year by individual metrics"
-    
     var prompt: String? {
         guard let academicRVUs else { return nil }
         switch academicRVUs {
@@ -43,16 +41,14 @@ class AcademicProductivityModel {
     var calculation: String? {
         guard let academicRVUs else { return nil }
         guard academicRVUs > 20 && academicRVUs <= 45 else { return nil }
-//        let removedTwenty = academicRVUs - 20
         return "(\(academicRVUs) aRVUs - 20 minimum) x 4 points/aRVU"
     }
     
-    var footerAlignment: HorizontalAlignment {
-        if calculation != nil { return .trailing }
-        return .leading
-    }
-    
-    var description: String {
-        "The Department's minimum standard of academic productivity is 20 aRVUs. Any physician earning ≤ 20 aRVUs will forfeit their academic productivity variable compensation. At 21 aRVUs, physicians will earn 4 VC points per aRVU to 45 aRVUs (a maximum of 100 points"
+    var description: LocalizedStringKey {
+        """
+        A maximum of 100 points of the eligible Quality/VBP VC will be based upon Clinician academic productivity as represented by Academic Relative Value Units (aRVUs) on your Academic Incentive Model (AIM) Report. This component of VC is an **individual** metric.
+        
+        We recognize that all faculty members make valuable contributions in multiple areas that are not included in the AIM criteria. Such initiatives will be acknowledged in the annual performance reviews and/or forwarded to the Chair for consideration during promotion. Please see Academic Incentive Model (AIM) Policy for complete details of aRVU evaluation. The Department’s minimum standard of academic productivity is 20 aRVUs. Any clinician ≤ 20 aRVUs will forfeit their academic productivity VC. At 21 aRVUs, clinicians will earn **4 VC points per aRVU** to 45 aRVUs (a maximum of 100 points). Academic productivity requirements will be prorated to total FTE.
+        """
     }
 }

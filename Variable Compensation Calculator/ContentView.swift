@@ -8,35 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var viewModel = CalculatorViewModel()
+    @State var baseSalary = 0
+    @State var calculatorModel = CalculatorModel()
+    
     var body: some View {
         NavigationStack {
             Form {
                 Section {
                     LabeledContent("Base Salary") {
-                        TextField("Base Salary", value: $viewModel.baseSalary, format: .currency(code: "USD"))
+                        TextField("Base Salary", value: $baseSalary, format: .currency(code: "USD"))
                             .multilineTextAlignment(.trailing)
                     }
                 }
                 
-                
-                LabeledContent("MGMA Percentile") {
-                    TextField("MGMA Percentile", value: $viewModel.mgmaPercentile, format: .number)
-                        .multilineTextAlignment(.trailing)
-                }
-                
-                LabeledContent("WAR Activities") {
-                    TextField("WAR Activities", value: $viewModel.warActivities, format: .number)
-                }
-                
-                LabeledContent("Group Activities") {
-                    TextField("WAR Activities", value: $viewModel.qualityMeasuresPoints, format: .number)
-                }
-                
+                ClinicalSection(model: calculatorModel.clinicalProductivityModel)
+                AcademicSection(model: calculatorModel.academicProductivityModel)
+                WellnessAndResiliencySection(activityModel: calculatorModel.warActivityModel, vacationModel: calculatorModel.vacationModel)
                 
             }
             .navigationTitle("Variable Compensation Estimator")
             .toolbarTitleDisplayMode(.inline)
+            .formStyle(.grouped)
         }
     }
 }
