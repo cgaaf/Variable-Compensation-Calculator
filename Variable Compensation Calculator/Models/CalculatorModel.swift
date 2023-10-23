@@ -13,9 +13,10 @@ class CalculatorModel {
     var clinicalProductivityModel = ClinicalProductivityModel()
     var warActivityModel = WARActivityModel()
     var vacationModel = VacationModel()
+    var spaModel = SocialProgressModel()
     
     var totalPoints: Int {
-        let domains = [ academicProductivityModel.academicPoints, clinicalProductivityModel.clinicalPoints, warActivityModel.warPoints, vacationModel.vacationPoints ]
+        let domains = [ academicProductivityModel.academicPoints, clinicalProductivityModel.clinicalPoints, warActivityModel.warPoints, vacationModel.vacationPoints, spaModel.spaPoints ]
         return domains.reduce(0, +)
     }
 }

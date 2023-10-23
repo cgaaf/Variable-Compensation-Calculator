@@ -13,10 +13,13 @@ class SocialProgressModel {
     var numberOfEvents: Int
     var averageHoursPerEvent: Double
     
-    init(numberOfEvents: Int, averageHoursPerEvent: Double) {
+    init(numberOfEvents: Int = 0, averageHoursPerEvent: Double = 0) {
         self.numberOfEvents = numberOfEvents
         self.averageHoursPerEvent = averageHoursPerEvent
     }
+    
+    let hoursPerEventOptions: [Double] = [0, 0.5, 0.75, 1, 2, 3, 4, 5, 6, 7, 8]
+    let numberOfEventsOptions: [Int] = [0, 1, 2, 3, 4, 5, 6, 7, 8]
     
     var spaPoints: Int {
         switch (numberOfEvents, averageHoursPerEvent) {

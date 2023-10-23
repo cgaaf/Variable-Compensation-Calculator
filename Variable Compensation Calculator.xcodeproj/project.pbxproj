@@ -21,6 +21,7 @@
 		C2BCAC2C2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */; };
 		C2BCAC2E2AE1817B00CA2C31 /* WARActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2D2AE1817B00CA2C31 /* WARActivityModel.swift */; };
 		C2BCAC302AE18C8800CA2C31 /* SocialProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */; };
+		C2BCAC322AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC312AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessAndResiliencySection.swift; sourceTree = "<group>"; };
 		C2BCAC2D2AE1817B00CA2C31 /* WARActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WARActivityModel.swift; path = "../../../../../Library/Mobile Documents/com~apple~CloudDocs/Records/WARActivityModel.swift"; sourceTree = "<group>"; };
 		C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProgressModel.swift; sourceTree = "<group>"; };
+		C2BCAC312AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProgressPracticeEvolutionSection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C25E7E932AE051EE005615D1 /* AcademicSection.swift */,
 				C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */,
 				C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */,
+				C2BCAC312AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				C200F59D2ACB900500601221 /* ContentView.swift in Sources */,
 				C2BCAC302AE18C8800CA2C31 /* SocialProgressModel.swift in Sources */,
 				C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */,
+				C2BCAC322AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift in Sources */,
 				C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */,
 				C2BCAC222AE063EC00CA2C31 /* CalculatorModel.swift in Sources */,
 				C2BCAC2C2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift in Sources */,

@@ -24,6 +24,7 @@ struct ContentView: View {
                 ClinicalSection(model: calculatorModel.clinicalProductivityModel)
                 AcademicSection(model: calculatorModel.academicProductivityModel)
                 WellnessAndResiliencySection(activityModel: calculatorModel.warActivityModel, vacationModel: calculatorModel.vacationModel)
+                SocialProgressPracticeEvolutionSection(spaModel: calculatorModel.spaModel)
                 
             }
             .navigationTitle("Variable Compensation Estimator")
