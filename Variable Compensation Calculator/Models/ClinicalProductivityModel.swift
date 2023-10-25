@@ -30,7 +30,7 @@ class ClinicalProductivityModel {
         guard let rvuPercentile else { return nil }
         switch rvuPercentile {
         case ..<40:
-            return "No points earned until a minumum of 35th MGMA percentile met"
+            return "No points earned until a minumum of 40th MGMA percentile met"
         case 66...:
             return "Maximum of 100 points earned after 65th MGMA percentile met"
         default:

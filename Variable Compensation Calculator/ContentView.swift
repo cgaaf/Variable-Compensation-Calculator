@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var baseSalary = 0
     @State var calculatorModel = CalculatorModel()
     
     var body: some View {
@@ -16,15 +15,18 @@ struct ContentView: View {
             Form {
                 Section {
                     LabeledContent("Base Salary") {
-                        TextField("Base Salary", value: $baseSalary, format: .currency(code: "USD"))
+                        TextField("Base Salary", value: $calculatorModel.baseSalary, format: .currency(code: "USD"))
                             .multilineTextAlignment(.trailing)
                     }
+                    LabeledContent("Total VC Points", value: calculatorModel.totalPoints, format: .number)
+                    LabeledContent("Minimum VC Payment", value: calculatorModel.minimumPayment, format: .currency(code: "USD"))
                 }
                 
                 ClinicalSection(model: calculatorModel.clinicalProductivityModel)
                 AcademicSection(model: calculatorModel.academicProductivityModel)
                 WellnessAndResiliencySection(activityModel: calculatorModel.warActivityModel, vacationModel: calculatorModel.vacationModel)
-                SocialProgressPracticeEvolutionSection(spaModel: calculatorModel.spaModel)
+                SocialProgressPracticeEvolutionSection(spaModel: calculatorModel.spaModel, pepModel: calculatorModel.pepModel)
+                QualitySection(qualityModel: calculatorModel.qualityModel)
                 
             }
             .navigationTitle("Variable Compensation Estimator")
