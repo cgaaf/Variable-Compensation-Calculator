@@ -18,7 +18,7 @@ struct SocialProgressPracticeEvolutionSection: View {
     var body: some View {
         Section {
             LabeledContent("# of events") {
-                Picker("", selection: $spaModel.numberOfEvents) {
+                Picker("", selection: $spaModel.numberOfSPAEvents) {
                     ForEach(spaModel.numberOfEventsOptions, id: \.self) { number in
                         Text(number, format: .number)
                             .tag(number)
@@ -27,7 +27,7 @@ struct SocialProgressPracticeEvolutionSection: View {
             }
             
             LabeledContent("Average hours per event") {
-                Picker("", selection: $spaModel.averageHoursPerEvent) {
+                Picker("", selection: $spaModel.averageHoursPerSPAEvent) {
                     ForEach(spaModel.hoursPerEventOptions, id: \.self) { number in
                         Text(number, format: .number)
                             .tag(number)
@@ -36,13 +36,19 @@ struct SocialProgressPracticeEvolutionSection: View {
             }
             
             LabeledContent("Points Earned", value: spaModel.spaPoints, format: .number)
+            
+            DisclosureGroup("Description") {
+                Text(spaModel.description)
+                    .font(.caption)
+            }
+            
         } header: {
             Text("Social Progress Activities")
         }
         
         Section {
             LabeledContent("Smart goal score") {
-                Picker("", selection: $pepModel.smartGoalScore) {
+                Picker("", selection: $pepModel.pepSmartGoalScore) {
                     ForEach(pepModel.smartGoalOptions, id: \.self) { number in
                         Text(number, format: .number)
                             .tag(number)
@@ -51,7 +57,7 @@ struct SocialProgressPracticeEvolutionSection: View {
             }
             
             LabeledContent("Estimated time commitment") {
-                Picker("", selection: $pepModel.timeCommitment) {
+                Picker("", selection: $pepModel.pepTimeCommitment) {
                     ForEach(pepModel.timeCommitmentOptions, id: \.self) { number in
                         Text(number, format: .number)
                             .tag(number)
@@ -60,6 +66,12 @@ struct SocialProgressPracticeEvolutionSection: View {
             }
             
             LabeledContent("Points Earned", value: pepModel.pepPoints, format: .number)
+            
+            DisclosureGroup("Description") {
+                Text(pepModel.description)
+                    .font(.caption)
+            }
+            
         } header: {
             Text("Practice Evolution Project")
         }

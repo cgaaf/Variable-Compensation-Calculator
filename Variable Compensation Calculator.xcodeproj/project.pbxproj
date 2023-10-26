@@ -11,12 +11,13 @@
 		C200F59D2ACB900500601221 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C200F59C2ACB900500601221 /* ContentView.swift */; };
 		C200F59F2ACB900600601221 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C200F59E2ACB900600601221 /* Assets.xcassets */; };
 		C200F5A22ACB900600601221 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C200F5A12ACB900600601221 /* Preview Assets.xcassets */; };
+		C20C42382AEAE8F200AB4F7B /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C42372AEAE8F200AB4F7B /* CalculatorModel.swift */; };
+		C20C423B2AEAEBC700AB4F7B /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C423A2AEAEBC700AB4F7B /* OSLog+Extensions.swift */; };
 		C25E58632AE6D9EC001A4277 /* PracticeEvolutionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E58622AE6D9EC001A4277 /* PracticeEvolutionModel.swift */; };
 		C25E58652AE6F14F001A4277 /* QualityMeasuresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E58642AE6F14F001A4277 /* QualityMeasuresModel.swift */; };
 		C25E58672AE6F1F0001A4277 /* QualitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E58662AE6F1F0001A4277 /* QualitySection.swift */; };
 		C25E7E942AE051EE005615D1 /* AcademicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7E932AE051EE005615D1 /* AcademicSection.swift */; };
 		C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */; };
-		C2BCAC222AE063EC00CA2C31 /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC212AE063EC00CA2C31 /* CalculatorModel.swift */; };
 		C2BCAC242AE0B1E000CA2C31 /* ClinicalProductivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */; };
 		C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */; };
 		C2BCAC282AE1806600CA2C31 /* VacationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC272AE1806600CA2C31 /* VacationModel.swift */; };
@@ -32,12 +33,13 @@
 		C200F59C2ACB900500601221 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C200F59E2ACB900600601221 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C200F5A12ACB900600601221 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C20C42372AEAE8F200AB4F7B /* CalculatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
+		C20C423A2AEAEBC700AB4F7B /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
 		C25E58622AE6D9EC001A4277 /* PracticeEvolutionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeEvolutionModel.swift; sourceTree = "<group>"; };
 		C25E58642AE6F14F001A4277 /* QualityMeasuresModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityMeasuresModel.swift; sourceTree = "<group>"; };
 		C25E58662AE6F1F0001A4277 /* QualitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualitySection.swift; sourceTree = "<group>"; };
 		C25E7E932AE051EE005615D1 /* AcademicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicSection.swift; sourceTree = "<group>"; };
 		C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicProductivityModel.swift; sourceTree = "<group>"; };
-		C2BCAC212AE063EC00CA2C31 /* CalculatorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalProductivityModel.swift; sourceTree = "<group>"; };
 		C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalSection.swift; sourceTree = "<group>"; };
 		C2BCAC272AE1806600CA2C31 /* VacationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacationModel.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		C200F5992ACB900500601221 /* Variable Compensation Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				C20C42392AEAEBB500AB4F7B /* Helpers */,
 				C25E7E902AE04E4F005615D1 /* Views */,
 				C25E7E8D2ADF1AB7005615D1 /* Models */,
 				C200F59A2ACB900500601221 /* Variable_Compensation_CalculatorApp.swift */,
@@ -95,10 +98,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C20C42392AEAEBB500AB4F7B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C20C423A2AEAEBC700AB4F7B /* OSLog+Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C25E7E8D2ADF1AB7005615D1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C2BCAC212AE063EC00CA2C31 /* CalculatorModel.swift */,
+				C20C42372AEAE8F200AB4F7B /* CalculatorModel.swift */,
 				C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */,
 				C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */,
 				C2BCAC272AE1806600CA2C31 /* VacationModel.swift */,
@@ -201,9 +212,10 @@
 				C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */,
 				C2BCAC322AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift in Sources */,
 				C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */,
-				C2BCAC222AE063EC00CA2C31 /* CalculatorModel.swift in Sources */,
+				C20C423B2AEAEBC700AB4F7B /* OSLog+Extensions.swift in Sources */,
 				C25E58632AE6D9EC001A4277 /* PracticeEvolutionModel.swift in Sources */,
 				C2BCAC2C2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift in Sources */,
+				C20C42382AEAE8F200AB4F7B /* CalculatorModel.swift in Sources */,
 				C25E58672AE6F1F0001A4277 /* QualitySection.swift in Sources */,
 				C25E58652AE6F14F001A4277 /* QualityMeasuresModel.swift in Sources */,
 				C200F59B2ACB900500601221 /* Variable_Compensation_CalculatorApp.swift in Sources */,

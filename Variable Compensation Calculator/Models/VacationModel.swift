@@ -11,6 +11,7 @@ import SwiftUI
 @Observable
 class VacationModel {
     var vacationIsCompleted: Bool
+    private let vacationIsCompletedKey = "VacationIsCompleted"
     
     init(vacationIsCompleted: Bool = false) {
         self.vacationIsCompleted = vacationIsCompleted
@@ -28,5 +29,13 @@ class VacationModel {
         """
         The Department’s minimum standard is a 9-day vacation block submitted via a form request in Shift Admin. Vacations that are not submitted through the forms function in ShiftAdmin (i.e., High priority requests) will not be recognized for points calculation. Any clinician meeting the minimum standard for this metric will earn 50 VC points.
         """
+    }
+    
+    func saveVacationIsCompleted() {
+        UserDefaults.standard.setValue(vacationIsCompleted, forKey: vacationIsCompletedKey)
+    }
+    
+    func loadVacationIsCompleted() {
+        UserDefaults.standard.bool(forKey: vacationIsCompletedKey)
     }
 }

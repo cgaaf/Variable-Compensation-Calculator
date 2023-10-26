@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import OSLog
 
 @Observable
 class ClinicalProductivityModel {
     var rvuPercentile: Int?
+    private let rvuPercentileKey = "RVUPercentile"
     
     init(rvuPercentile: Int? = nil) {
         self.rvuPercentile = rvuPercentile
@@ -50,5 +52,17 @@ class ClinicalProductivityModel {
         guard let rvuPercentile else { return nil }
         guard rvuPercentile > 40 && rvuPercentile <= 65 else { return nil }
         return "(\(rvuPercentile)th percentile - 40th minimum) x 4 points/%"
+    }
+    
+    func saveRVUPercentile() {
+        if let rvuPercentile {
+            UserDefaults.standard.setValue(rvuPercentile, forKey: rvuPercentileKey)
+        } else {
+            Logger.model.info("rvuPercentile is currently nil. Save to UserDefaults only when a value is present")
+        }
+    }
+    
+    func loadRVUPercentile() {
+        self.rvuPercentile = UserDefaults.standard.object(forKey: rvuPercentileKey) as? Int
     }
 }

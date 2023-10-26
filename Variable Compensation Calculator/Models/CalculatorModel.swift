@@ -6,18 +6,42 @@
 //
 
 import Foundation
+import OSLog
 
 @Observable
 class CalculatorModel {
-    var baseSalary: Double = 0
+    var baseSalary: Double?
+    private let baseSalaryKey = "BaseSalary"
     
-    var academicProductivityModel = AcademicProductivityModel()
-    var clinicalProductivityModel = ClinicalProductivityModel()
-    var warActivityModel = WARActivityModel()
-    var vacationModel = VacationModel()
-    var spaModel = SocialProgressModel()
-    var pepModel = PracticeEvolutionModel()
-    var qualityModel = QualityMeasuresModel()
+    init(baseSalary: Double? = nil, academicProductivityModel: AcademicProductivityModel = AcademicProductivityModel(), clinicalProductivityModel: ClinicalProductivityModel = ClinicalProductivityModel(), warActivityModel: WARActivityModel = WARActivityModel(), vacationModel: VacationModel = VacationModel(), spaModel: SocialProgressModel = SocialProgressModel(), pepModel: PracticeEvolutionModel = PracticeEvolutionModel(), qualityModel: QualityMeasuresModel = QualityMeasuresModel()) {
+        self.baseSalary = baseSalary
+        self.academicProductivityModel = academicProductivityModel
+        self.clinicalProductivityModel = clinicalProductivityModel
+        self.warActivityModel = warActivityModel
+        self.vacationModel = vacationModel
+        self.spaModel = spaModel
+        self.pepModel = pepModel
+        self.qualityModel = qualityModel
+    }
+    
+//    init(academicProductivityModel: AcademicProductivityModel = AcademicProductivityModel(), clinicalProductivityModel: ClinicalProductivityModel = ClinicalProductivityModel(), warActivityModel: WARActivityModel = WARActivityModel(), vacationModel: VacationModel = VacationModel(), spaModel: SocialProgressModel = SocialProgressModel(), pepModel: PracticeEvolutionModel = PracticeEvolutionModel(), qualityModel: QualityMeasuresModel = QualityMeasuresModel()) {
+//        self.baseSalary = UserDefaults.standard.object(forKey: "BaseSalary") as? Double
+//        self.academicProductivityModel = academicProductivityModel
+//        self.clinicalProductivityModel = clinicalProductivityModel
+//        self.warActivityModel = warActivityModel
+//        self.vacationModel = vacationModel
+//        self.spaModel = spaModel
+//        self.pepModel = pepModel
+//        self.qualityModel = qualityModel
+//    }
+    
+    var academicProductivityModel: AcademicProductivityModel
+    var clinicalProductivityModel: ClinicalProductivityModel
+    var warActivityModel: WARActivityModel
+    var vacationModel: VacationModel
+    var spaModel: SocialProgressModel
+    var pepModel: PracticeEvolutionModel
+    var qualityModel: QualityMeasuresModel
     
     var pepSpaPoints: Int {
         let total = spaModel.spaPoints + pepModel.pepPoints
@@ -30,7 +54,18 @@ class CalculatorModel {
     }
     
     var minimumPayment: Double {
+        guard let baseSalary else { return 0 }
         let pricePerPoint = (baseSalary * 0.1) / 500
         return pricePerPoint * Double(totalPoints)
+    }
+    
+    func saveBaseSalary() {
+        if let baseSalary {
+            UserDefaults.standard.set(baseSalary, forKey: baseSalaryKey)
+        }
+    }
+    
+    func loadBaseSalary() {
+        self.baseSalary = UserDefaults.standard.object(forKey: baseSalaryKey) as? Double
     }
 }

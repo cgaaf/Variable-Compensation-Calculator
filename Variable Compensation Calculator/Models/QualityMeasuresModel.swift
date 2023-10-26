@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import OSLog
 
 @Observable
 class QualityMeasuresModel {
     var acuteClinicalOutcomeScore: Int?
+    private let acuteClinicalOutcomeScoreKey = "AcuteClinicalOutcomeScore"
     
     var qualityPoints: Int {
         guard let acuteClinicalOutcomeScore else { return 0 }
@@ -42,5 +44,17 @@ class QualityMeasuresModel {
         """
         A maximum of 50 points of the eligible Quality/VBP VC will be based upon the Prisma Health Overall Quality and Safety Acute Care Quality Score. This component of VC is a group metric. The Department of Emergency Medicine recognizes that we play a pivotal role in overall quality of health care delivered in our health systems. Prisma Health has developed a robust Quality and Safety reporting system. The Acute Care Quality performance is measured and weighted (40%) of the overall Quality and Patient safety dashboard. The goal is an Acute Clinical outcome score of 100. The group will earn 1 VC point per point of Acute Care Clinical outcome score above 50 to a score of 100 (a maximum of 50 points).
         """
+    }
+    
+    func saveAcuteClinicalOutcomeScore() {
+        if let acuteClinicalOutcomeScore {
+            UserDefaults.standard.set(acuteClinicalOutcomeScore, forKey: acuteClinicalOutcomeScoreKey)
+        } else {
+            Logger.model.info("acuteClinicalOutcomeScore is nil. acuteClinicalOutcomeScore must have a value to save to UserDefaults")
+        }
+    }
+    
+    func loadAcuteClinicalOutcomeScore() {
+        self.acuteClinicalOutcomeScore = UserDefaults.standard.object(forKey: acuteClinicalOutcomeScoreKey) as? Int
     }
 }

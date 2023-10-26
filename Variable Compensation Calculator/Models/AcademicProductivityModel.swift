@@ -7,10 +7,12 @@
 
 import Foundation
 import SwiftUI
+import OSLog
 
 @Observable
 class AcademicProductivityModel {
     var academicRVUs: Int?
+    private let academicRVUKey = "AcademicRVUs"
     
     init(initialAcademicRVUs: Int? = nil) {
         self.academicRVUs = initialAcademicRVUs
@@ -50,5 +52,17 @@ class AcademicProductivityModel {
         
         We recognize that all faculty members make valuable contributions in multiple areas that are not included in the AIM criteria. Such initiatives will be acknowledged in the annual performance reviews and/or forwarded to the Chair for consideration during promotion. Please see Academic Incentive Model (AIM) Policy for complete details of aRVU evaluation. The Department’s minimum standard of academic productivity is 20 aRVUs. Any clinician ≤ 20 aRVUs will forfeit their academic productivity VC. At 21 aRVUs, clinicians will earn **4 VC points per aRVU** to 45 aRVUs (a maximum of 100 points). Academic productivity requirements will be prorated to total FTE.
         """
+    }
+    
+    func saveAcademicRVUs() {
+        if let academicRVUs {
+            UserDefaults.standard.setValue(academicRVUs, forKey: academicRVUKey)
+        } else {
+            Logger.model.info("academicRVUs are currently nil. Save to UserDefaults only when academicRVUs is not nil")
+        }
+    }
+    
+    func loadAcademicRVUs() {
+        self.academicRVUs = UserDefaults.standard.object(forKey: academicRVUKey) as? Int
     }
 }
