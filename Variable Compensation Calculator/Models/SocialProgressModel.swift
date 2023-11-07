@@ -7,11 +7,20 @@
 
 import Foundation
 import SwiftUI
+import OSLog
 
 @Observable
 class SocialProgressModel {
-    var numberOfSPAEvents: Int
-    var averageHoursPerSPAEvent: Double
+    var numberOfSPAEvents: Int {
+        didSet {
+            saveNumberOfSPAEvents()
+        }
+    }
+    var averageHoursPerSPAEvent: Double {
+        didSet {
+            saveAverageHoursPerSPAEvent()
+        }
+    }
     
     private let numberOfSPAEventsKey = "NumberOfSPAEvents"
     private let averagehoursPerSPAEventKey = "AverageHoursPerSPAEvent"
@@ -74,6 +83,7 @@ class SocialProgressModel {
     }
     
     func loadNumberOfSPAEvents() {
+        Logger.model.info("Loading saved from key: \(self.numberOfSPAEventsKey)")
         self.numberOfSPAEvents = UserDefaults.standard.integer(forKey: numberOfSPAEventsKey)
     }
     
@@ -82,6 +92,17 @@ class SocialProgressModel {
     }
     
     func loadAverageHoursPerSPAEvent() {
+        Logger.model.info("Loading saved from key: \(self.averagehoursPerSPAEventKey)")
         self.averageHoursPerSPAEvent = UserDefaults.standard.double(forKey: averagehoursPerSPAEventKey)
+    }
+    
+    func loadAll() {
+        loadNumberOfSPAEvents()
+        loadAverageHoursPerSPAEvent()
+    }
+    
+    func saveAll() {
+        saveNumberOfSPAEvents()
+        saveAverageHoursPerSPAEvent()
     }
 }

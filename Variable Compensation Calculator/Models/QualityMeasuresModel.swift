@@ -11,7 +11,11 @@ import OSLog
 
 @Observable
 class QualityMeasuresModel {
-    var acuteClinicalOutcomeScore: Int?
+    var acuteClinicalOutcomeScore: Int? {
+        didSet {
+            saveAcuteClinicalOutcomeScore()
+        }
+    }
     private let acuteClinicalOutcomeScoreKey = "AcuteClinicalOutcomeScore"
     
     var qualityPoints: Int {

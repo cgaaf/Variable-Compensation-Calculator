@@ -11,7 +11,11 @@ import OSLog
 
 @Observable
 class ClinicalProductivityModel {
-    var rvuPercentile: Int?
+    var rvuPercentile: Int? {
+        didSet {
+            saveRVUPercentile()
+        }
+    }
     private let rvuPercentileKey = "RVUPercentile"
     
     init(rvuPercentile: Int? = nil) {
@@ -63,6 +67,7 @@ class ClinicalProductivityModel {
     }
     
     func loadRVUPercentile() {
+        Logger.model.info("Loading saved from key: \(self.rvuPercentileKey)")
         self.rvuPercentile = UserDefaults.standard.object(forKey: rvuPercentileKey) as? Int
     }
 }

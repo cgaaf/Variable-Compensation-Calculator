@@ -19,6 +19,7 @@ struct AcademicSection: View {
             LabeledContent("Academic RVUs") {
                 TextField("Academic RVUs", value: $model.academicRVUs, format: .number, prompt: Text("aRVUs"))
                     .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
             }
             
             VStack(alignment: .leading) {

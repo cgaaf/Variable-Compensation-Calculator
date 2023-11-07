@@ -10,7 +10,11 @@ import OSLog
 
 @Observable
 class CalculatorModel {
-    var baseSalary: Double?
+    var baseSalary: Double? {
+        didSet {
+            saveBaseSalary()
+        }
+    }
     private let baseSalaryKey = "BaseSalary"
     
     init(baseSalary: Double? = nil, academicProductivityModel: AcademicProductivityModel = AcademicProductivityModel(), clinicalProductivityModel: ClinicalProductivityModel = ClinicalProductivityModel(), warActivityModel: WARActivityModel = WARActivityModel(), vacationModel: VacationModel = VacationModel(), spaModel: SocialProgressModel = SocialProgressModel(), pepModel: PracticeEvolutionModel = PracticeEvolutionModel(), qualityModel: QualityMeasuresModel = QualityMeasuresModel()) {
@@ -23,17 +27,6 @@ class CalculatorModel {
         self.pepModel = pepModel
         self.qualityModel = qualityModel
     }
-    
-//    init(academicProductivityModel: AcademicProductivityModel = AcademicProductivityModel(), clinicalProductivityModel: ClinicalProductivityModel = ClinicalProductivityModel(), warActivityModel: WARActivityModel = WARActivityModel(), vacationModel: VacationModel = VacationModel(), spaModel: SocialProgressModel = SocialProgressModel(), pepModel: PracticeEvolutionModel = PracticeEvolutionModel(), qualityModel: QualityMeasuresModel = QualityMeasuresModel()) {
-//        self.baseSalary = UserDefaults.standard.object(forKey: "BaseSalary") as? Double
-//        self.academicProductivityModel = academicProductivityModel
-//        self.clinicalProductivityModel = clinicalProductivityModel
-//        self.warActivityModel = warActivityModel
-//        self.vacationModel = vacationModel
-//        self.spaModel = spaModel
-//        self.pepModel = pepModel
-//        self.qualityModel = qualityModel
-//    }
     
     var academicProductivityModel: AcademicProductivityModel
     var clinicalProductivityModel: ClinicalProductivityModel
@@ -67,5 +60,27 @@ class CalculatorModel {
     
     func loadBaseSalary() {
         self.baseSalary = UserDefaults.standard.object(forKey: baseSalaryKey) as? Double
+    }
+    
+    func saveAll() {
+        saveBaseSalary()
+        academicProductivityModel.saveAcademicRVUs()
+        clinicalProductivityModel.saveRVUPercentile()
+        warActivityModel.saveWARActivities()
+        vacationModel.saveVacationIsCompleted()
+        spaModel.saveAll()
+        pepModel.saveAll()
+        qualityModel.saveAcuteClinicalOutcomeScore()
+    }
+    
+    func loadAll() {
+        loadBaseSalary()
+        academicProductivityModel.loadAcademicRVUs()
+        clinicalProductivityModel.loadRVUPercentile()
+        warActivityModel.loadWARActivities()
+        vacationModel.loadVacationIsCompleted()
+        spaModel.loadAll()
+        pepModel.loadAll()
+        qualityModel.loadAcuteClinicalOutcomeScore()
     }
 }

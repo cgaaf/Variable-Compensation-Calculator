@@ -11,7 +11,11 @@ import OSLog
 
 @Observable
 class AcademicProductivityModel {
-    var academicRVUs: Int?
+    var academicRVUs: Int? {
+        didSet {
+            saveAcademicRVUs()
+        }
+    }
     private let academicRVUKey = "AcademicRVUs"
     
     init(initialAcademicRVUs: Int? = nil) {
@@ -63,6 +67,7 @@ class AcademicProductivityModel {
     }
     
     func loadAcademicRVUs() {
+        Logger.model.info("Loading saved from key: \(self.academicRVUKey)")
         self.academicRVUs = UserDefaults.standard.object(forKey: academicRVUKey) as? Int
     }
 }

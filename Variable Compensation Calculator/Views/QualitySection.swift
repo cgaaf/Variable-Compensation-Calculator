@@ -15,6 +15,7 @@ struct QualitySection: View {
             LabeledContent("Acute Care Clinical Outcome Score") {
                 TextField("Acute Care Clinical Outcome Score", value: $qualityModel.acuteClinicalOutcomeScore, format: .number, prompt: Text("Score"))
                     .multilineTextAlignment(.trailing)
+                    .keyboardType(.numberPad)
             }
             
             VStack(alignment: .leading) {

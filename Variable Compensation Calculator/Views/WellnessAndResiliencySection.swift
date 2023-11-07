@@ -16,10 +16,7 @@ struct WellnessAndResiliencySection: View {
             LabeledContent("WAR Activities") {
                 TextField("WAR Activities", value: $activityModel.warActivities, format: .number, prompt: Text("Activities"))
                     .multilineTextAlignment(.trailing)
-                    .onSubmit(activityModel.saveWARActivities)
-            }
-            .task {
-                activityModel.loadWARActivities()
+                    .keyboardType(.numberPad)
             }
             
             VStack(alignment: .leading) {

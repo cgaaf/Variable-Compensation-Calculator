@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ClinicalSection: View {
     @Bindable private var model: ClinicalProductivityModel
+    @FocusState private var isFocused: Bool
     
     init(model: ClinicalProductivityModel) {
         self.model = model
@@ -21,6 +22,10 @@ struct ClinicalSection: View {
             LabeledContent("Market Percentile") {
                 TextField("Market Percentile", value: $model.rvuPercentile, format: .number, prompt: Text("Percentile"))
                     .multilineTextAlignment(.trailing)
+                    .onSubmit(model.saveRVUPercentile)
+                    .focused($isFocused)
+                    .keyboardType(.numberPad)
+                    .scrollDismissesKeyboard(.immediately)
             }
             
             VStack(alignment: .leading) {

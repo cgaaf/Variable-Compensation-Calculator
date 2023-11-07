@@ -7,10 +7,15 @@
 
 import Foundation
 import SwiftUI
+import OSLog
 
 @Observable
 class VacationModel {
-    var vacationIsCompleted: Bool
+    var vacationIsCompleted: Bool {
+        didSet {
+            saveVacationIsCompleted()
+        }
+    }
     private let vacationIsCompletedKey = "VacationIsCompleted"
     
     init(vacationIsCompleted: Bool = false) {
@@ -36,6 +41,7 @@ class VacationModel {
     }
     
     func loadVacationIsCompleted() {
+        Logger.model.info("Loading saved from key: \(self.vacationIsCompletedKey)")
         UserDefaults.standard.bool(forKey: vacationIsCompletedKey)
     }
 }
