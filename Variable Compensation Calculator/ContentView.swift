@@ -9,24 +9,11 @@ import SwiftUI
 import OSLog
 
 struct ContentView: View {
-    @State var position: Int?
-    @Namespace var topID
-    
     var body: some View {
         NavigationStack {
-            ScrollViewReader { proxy in
-                VCFormView()
-                    .navigationTitle("Variable Compensation Estimator")
-                    .toolbarTitleDisplayMode(.inline)
-                    .scrollPosition(id: $position)
-            }
-            .onChange(of: position, initial: true, { oldValue, newValue in
-                if let position {
-                    print(position)
-                } else {
-                    print("Position is nil")
-                }
-            })
+            VCFormView()
+                .navigationTitle("Variable Compensation Estimator")
+                .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .keyboard) {
                     Button("Dismiss Keyboard") {

@@ -37,11 +37,12 @@ class VacationModel {
     }
     
     func saveVacationIsCompleted() {
+        Logger.model.info("Saving vacationIsCompleted with value: \(self.vacationIsCompleted)")
         UserDefaults.standard.setValue(vacationIsCompleted, forKey: vacationIsCompletedKey)
     }
     
     func loadVacationIsCompleted() {
         Logger.model.info("Loading saved from key: \(self.vacationIsCompletedKey)")
-        UserDefaults.standard.bool(forKey: vacationIsCompletedKey)
+        vacationIsCompleted = UserDefaults.standard.bool(forKey: vacationIsCompletedKey)
     }
 }

@@ -9,28 +9,48 @@ import SwiftUI
 
 struct VCFormView: View {
     @State var calculatorModel = CalculatorModel()
+    @Namespace var topID
     
     var body: some View {
-        Form {
-            Section {
-                LabeledContent("Base Salary") {
-                    TextField("Base Salary", value: $calculatorModel.baseSalary, format: .currency(code: "USD"))
-                        .multilineTextAlignment(.trailing)
-                        .keyboardType(.decimalPad)
+        ScrollViewReader { proxy in
+            Form {
+                Section {
+                    LabeledContent("Base Salary") {
+                        TextField("Base Salary", value: $calculatorModel.baseSalary, format: .currency(code: "USD"))
+                            .multilineTextAlignment(.trailing)
+                            .keyboardType(.decimalPad)
                         
+                    }
+                    LabeledContent("Total VC Points", value: calculatorModel.totalPoints, format: .number)
+                    LabeledContent("Minimum VC Payment", value: calculatorModel.minimumPayment, format: .currency(code: "USD"))
                 }
-                LabeledContent("Total VC Points", value: calculatorModel.totalPoints, format: .number)
-                LabeledContent("Minimum VC Payment", value: calculatorModel.minimumPayment, format: .currency(code: "USD"))
+                .id(topID)
+                
+                ClinicalSection(model: calculatorModel.clinicalProductivityModel)
+                AcademicSection(model: calculatorModel.academicProductivityModel)
+                WellnessAndResiliencySection(activityModel: calculatorModel.warActivityModel, vacationModel: calculatorModel.vacationModel)
+                SocialProgressPracticeEvolutionSection(spaModel: calculatorModel.spaModel, pepModel: calculatorModel.pepModel)
+                QualitySection(qualityModel: calculatorModel.qualityModel)
+                
+                Section {
+                    Button {
+                        withAnimation {
+                            proxy.scrollTo(topID, anchor: .top)
+                        }
+                    } label: {
+                        LabeledContent {
+                            Image(systemName: "arrow.up")
+                                .foregroundStyle(.blue)
+                        } label: {
+                            Text("Scroll to top")
+                        }
+                        
+                    }
+                }
+                
             }
-            
-            ClinicalSection(model: calculatorModel.clinicalProductivityModel)
-            AcademicSection(model: calculatorModel.academicProductivityModel)
-            WellnessAndResiliencySection(activityModel: calculatorModel.warActivityModel, vacationModel: calculatorModel.vacationModel)
-            SocialProgressPracticeEvolutionSection(spaModel: calculatorModel.spaModel, pepModel: calculatorModel.pepModel)
-            QualitySection(qualityModel: calculatorModel.qualityModel)
+            .formStyle(.grouped)
         }
-        .scrollTargetLayout()
-        .formStyle(.grouped)
         .task {
             calculatorModel.loadAll()
         }
