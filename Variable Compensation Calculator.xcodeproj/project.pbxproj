@@ -27,6 +27,7 @@
 		C2BCAC302AE18C8800CA2C31 /* SocialProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */; };
 		C2BCAC322AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC312AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift */; };
 		C2E0F4062AFAAAA300A92FCA /* VCFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E0F4052AFAAAA300A92FCA /* VCFormView.swift */; };
+		C2F9059E2B19719700E1E906 /* AASection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F9059D2B19719700E1E906 /* AASection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		C2BCAC2F2AE18C8800CA2C31 /* SocialProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProgressModel.swift; sourceTree = "<group>"; };
 		C2BCAC312AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialProgressPracticeEvolutionSection.swift; sourceTree = "<group>"; };
 		C2E0F4052AFAAAA300A92FCA /* VCFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCFormView.swift; sourceTree = "<group>"; };
+		C2F9059D2B19719700E1E906 /* AASection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AASection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 				C2BCAC2B2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift */,
 				C2BCAC312AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift */,
 				C25E58662AE6F1F0001A4277 /* QualitySection.swift */,
+				C2F9059D2B19719700E1E906 /* AASection.swift */,
 				C2E0F4052AFAAAA300A92FCA /* VCFormView.swift */,
 			);
 			path = Views;
@@ -227,6 +230,7 @@
 				C2BCAC2C2AE1814E00CA2C31 /* WellnessAndResiliencySection.swift in Sources */,
 				C20C42382AEAE8F200AB4F7B /* CalculatorModel.swift in Sources */,
 				C25E58672AE6F1F0001A4277 /* QualitySection.swift in Sources */,
+				C2F9059E2B19719700E1E906 /* AASection.swift in Sources */,
 				C25E58652AE6F14F001A4277 /* QualityMeasuresModel.swift in Sources */,
 				C200F59B2ACB900500601221 /* Variable_Compensation_CalculatorApp.swift in Sources */,
 			);

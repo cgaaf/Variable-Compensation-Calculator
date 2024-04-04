@@ -10,6 +10,7 @@ import SwiftUI
 struct ClinicalSection: View {
     @Bindable private var model: ClinicalProductivityModel
     @FocusState private var isFocused: Bool
+    @State private var isExpanded = true
     
     init(model: ClinicalProductivityModel) {
         self.model = model
@@ -18,7 +19,7 @@ struct ClinicalSection: View {
 
     
     var body: some View {
-        Section {
+        DisclosureGroup(isExpanded: $isExpanded) {
             LabeledContent("Market Percentile") {
                 TextField("Market Percentile", value: $model.rvuPercentile, format: .number, prompt: Text("Percentile"))
                     .multilineTextAlignment(.trailing)
@@ -30,6 +31,7 @@ struct ClinicalSection: View {
             
             VStack(alignment: .leading) {
                 LabeledContent("Points Earned", value: model.clinicalPoints, format: .number)
+                
                 if let prompt = model.prompt {
                     Text(prompt)
                         .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
@@ -45,13 +47,25 @@ struct ClinicalSection: View {
                 }
             }
             
+            Gauge(value: 0.8) {
+                Text("Progress")
+            }
+            .gaugeStyle(CustomGaugeStyle())
+            .tint(Gradient(colors: [.purple, .cyan, .green]))
+            
             DisclosureGroup("Description") {
                 Text(model.description)
                     .font(.caption)
             }
             
-        } header: {
-            Text("Clinical Productivity")
+        } label: {
+            VStack(alignment: .leading) {
+                Text("Clinical Productivity")
+                    .font(.headline)
+                Gauge(value: 0.5) {}
+                    .tint(Gradient(colors: [.purple, .cyan, .green]))
+            }
+            
         }
     }
 }
@@ -59,5 +73,24 @@ struct ClinicalSection: View {
 #Preview {
     Form {
         ClinicalSection(model: .init())
+    }
+}
+
+struct CustomGaugeStyle: GaugeStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        VStack(alignment: .leading) {
+            configuration.label
+            
+            GeometryReader { proxy in
+                ZStack {
+                    RoundedRectangle(cornerRadius: 100)
+                        .foregroundStyle(.gray)
+                    RoundedRectangle(cornerRadius: 100)
+                        .foregroundStyle(.tint)
+                }
+                
+            }
+            
+        }
     }
 }
