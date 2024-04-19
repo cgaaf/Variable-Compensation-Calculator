@@ -32,6 +32,10 @@ class AcademicProductivityModel {
         return _points
     }
     
+    var percentCompleted: Double {
+        Double(academicPoints) / 100
+    }
+    
     var prompt: String? {
         guard let academicRVUs else { return nil }
         switch academicRVUs {

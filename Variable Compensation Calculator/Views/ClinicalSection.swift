@@ -16,57 +16,46 @@ struct ClinicalSection: View {
         self.model = model
     }
     
-
-    
     var body: some View {
-        DisclosureGroup(isExpanded: $isExpanded) {
-            LabeledContent("Market Percentile") {
-                TextField("Market Percentile", value: $model.rvuPercentile, format: .number, prompt: Text("Percentile"))
-                    .multilineTextAlignment(.trailing)
-                    .onSubmit(model.saveRVUPercentile)
-                    .focused($isFocused)
-                    .keyboardType(.numberPad)
-                    .scrollDismissesKeyboard(.immediately)
-            }
-            
-            VStack(alignment: .leading) {
-                LabeledContent("Points Earned", value: model.clinicalPoints, format: .number)
-                
-                if let prompt = model.prompt {
-                    Text(prompt)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        .foregroundStyle(.red)
-                        .font(.caption)
-                }
-                
-                if let calculation = model.calculation {
-                    Text(calculation)
+        Section {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                LabeledContent("Market Percentile") {
+                    TextField("Market Percentile", value: $model.rvuPercentile, format: .number, prompt: Text("Percentile"))
                         .multilineTextAlignment(.trailing)
-                        .foregroundColor(.secondary)
+                        .onSubmit(model.saveRVUPercentile)
+                        .focused($isFocused)
+                        .keyboardType(.numberPad)
+                        .scrollDismissesKeyboard(.immediately)
+                }
+                
+                VStack(alignment: .leading) {
+                    LabeledContent("Points Earned", value: model.clinicalPoints, format: .number)
+                    
+                    if let prompt = model.prompt {
+                        Text(prompt)
+                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                            .foregroundStyle(.red)
+                            .font(.caption)
+                    }
+                    
+                    if let calculation = model.calculation {
+                        Text(calculation)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
+                }
+                
+                DisclosureGroup("Description") {
+                    Text(model.description)
                         .font(.caption)
                 }
+                
+            } label: {
+                SectionLabelView(title: "Clinical Productivity", gaugeValue: model.percentCompleted)
             }
-            
-            Gauge(value: 0.8) {
-                Text("Progress")
-            }
-            .gaugeStyle(CustomGaugeStyle())
-            .tint(Gradient(colors: [.purple, .cyan, .green]))
-            
-            DisclosureGroup("Description") {
-                Text(model.description)
-                    .font(.caption)
-            }
-            
-        } label: {
-            VStack(alignment: .leading) {
-                Text("Clinical Productivity")
-                    .font(.headline)
-                Gauge(value: 0.5) {}
-                    .tint(Gradient(colors: [.purple, .cyan, .green]))
-            }
-            
         }
+        
     }
 }
 

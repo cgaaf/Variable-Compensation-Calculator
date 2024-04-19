@@ -26,6 +26,10 @@ class QualityMeasuresModel {
         return acuteClinicalOutcomeScore - 50
     }
     
+    var percentCompleted: Double {
+        Double(qualityPoints) / 50
+    }
+    
     var prompt: String? {
         guard let acuteClinicalOutcomeScore else { return nil }
         switch acuteClinicalOutcomeScore {

@@ -8,46 +8,50 @@
 import SwiftUI
 
 struct QualitySection: View {
-    @Bindable var qualityModel: QualityMeasuresModel
+    @Bindable var model: QualityMeasuresModel
+    
+    @State var isExpanded = true
     
     var body: some View {
         Section {
-            LabeledContent("Acute Care Clinical Outcome Score") {
-                TextField("Acute Care Clinical Outcome Score", value: $qualityModel.acuteClinicalOutcomeScore, format: .number, prompt: Text("Score"))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-            
-            VStack(alignment: .leading) {
-                LabeledContent("Points Earned", value: qualityModel.qualityPoints, format: .number)
-                if let prompt = qualityModel.prompt {
-                    Text(prompt)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        .foregroundStyle(.red)
+            DisclosureGroup(isExpanded: $isExpanded) {
+                LabeledContent("Acute Care Clinical Outcome Score") {
+                    TextField("Acute Care Clinical Outcome Score", value: $model.acuteClinicalOutcomeScore, format: .number, prompt: Text("Score"))
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
+                }
+                
+                VStack(alignment: .leading) {
+                    LabeledContent("Points Earned", value: model.qualityPoints, format: .number)
+                    if let prompt = model.prompt {
+                        Text(prompt)
+                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                            .foregroundStyle(.red)
+                            .font(.caption)
+                    }
+                    
+                    if let calculation = model.calculation {
+                        Text(calculation)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
+                }
+                
+                DisclosureGroup("Description") {
+                    Text(model.description)
                         .font(.caption)
                 }
                 
-                if let calculation = qualityModel.calculation {
-                    Text(calculation)
-                        .multilineTextAlignment(.trailing)
-                        .foregroundColor(.secondary)
-                        .font(.caption)
-                }
+            } label: {
+                SectionLabelView(title: "Quality Measures", gaugeValue: model.percentCompleted)
             }
-            
-            DisclosureGroup("Description") {
-                Text(qualityModel.description)
-                    .font(.caption)
-            }
-            
-        } header: {
-            Text("Quality Measures")
         }
     }
 }
 
 #Preview {
     Form {
-        QualitySection(qualityModel: QualityMeasuresModel())
+        QualitySection(model: QualityMeasuresModel())
     }
 }

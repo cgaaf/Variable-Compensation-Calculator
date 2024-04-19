@@ -13,7 +13,7 @@ struct VCFormView: View {
     
     var body: some View {
         ScrollViewReader { proxy in
-            Form {
+            List {
                 Section {
                     LabeledContent("Base Salary") {
                         TextField("Base Salary", value: $calculatorModel.baseSalary, format: .currency(code: "USD"))
@@ -36,7 +36,7 @@ struct VCFormView: View {
                 AcademicSection(model: calculatorModel.academicProductivityModel)
                 WellnessAndResiliencySection(activityModel: calculatorModel.warActivityModel, vacationModel: calculatorModel.vacationModel)
                 SocialProgressPracticeEvolutionSection(spaModel: calculatorModel.spaModel, pepModel: calculatorModel.pepModel)
-                QualitySection(qualityModel: calculatorModel.qualityModel)
+                QualitySection(model: calculatorModel.qualityModel)
                 
                 Section {
                     Button {
@@ -55,7 +55,8 @@ struct VCFormView: View {
                 }
                 
             }
-            .formStyle(.grouped)
+            .listStyle(.insetGrouped)
+            .listSectionSpacing(.compact)
         }
         .task {
             calculatorModel.loadAll()

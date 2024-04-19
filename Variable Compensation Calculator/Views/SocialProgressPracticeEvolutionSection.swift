@@ -8,78 +8,106 @@
 import SwiftUI
 
 struct SocialProgressPracticeEvolutionSection: View {
-    @Bindable var spaModel: SocialProgressModel
-    @Bindable var pepModel: PracticeEvolutionModel
+    let spaModel: SocialProgressModel
+    let pepModel: PracticeEvolutionModel
+    
+    @State var isExpanded = true
     
     var total: Int {
         min(100, spaModel.spaPoints + pepModel.pepPoints)
     }
     
+    var percentCompleted: Double {
+        Double(total) / 100
+    }
+    
     var body: some View {
-        Section {
-            LabeledContent("# of events") {
-                Picker("", selection: $spaModel.numberOfSPAEvents) {
-                    ForEach(spaModel.numberOfEventsOptions, id: \.self) { number in
-                        Text(number, format: .number)
-                            .tag(number)
-                    }
-                }
-            }
+        DisclosureGroup(isExpanded: $isExpanded) {
+            LabeledContent("Total Points Earned", value: total, format: .number)
             
-            LabeledContent("Average hours per event") {
-                Picker("", selection: $spaModel.averageHoursPerSPAEvent) {
-                    ForEach(spaModel.hoursPerEventOptions, id: \.self) { number in
-                        Text(number, format: .number)
-                            .tag(number)
-                    }
-                }
-            }
+            SocialProgressSection(model: spaModel)
+                .gaugeStyle(.accessoryLinearCapacity)
             
-            LabeledContent("Points Earned", value: spaModel.spaPoints, format: .number)
+            PracticeEvolutionSection(model: pepModel)
+                .gaugeStyle(.accessoryLinearCapacity)
             
-            DisclosureGroup("Description") {
-                Text(spaModel.description)
-                    .font(.caption)
-            }
-            
-        } header: {
-            Text("Social Progress Activities")
+        } label: {
+            SectionLabelView(title: "PEP & SPA", gaugeValue: percentCompleted)
         }
         
-        Section {
-            LabeledContent("Smart goal score") {
-                Picker("", selection: $pepModel.pepSmartGoalScore) {
-                    ForEach(pepModel.smartGoalOptions, id: \.self) { number in
-                        Text(number, format: .number)
-                            .tag(number)
-                    }
-                }
-            }
-            
-            LabeledContent("Estimated time commitment") {
-                Picker("", selection: $pepModel.pepTimeCommitment) {
-                    ForEach(pepModel.timeCommitmentOptions, id: \.self) { number in
-                        Text(number, format: .number)
-                            .tag(number)
-                    }
-                }
-            }
-            
-            LabeledContent("Points Earned", value: pepModel.pepPoints, format: .number)
-            
-            DisclosureGroup("Description") {
-                Text(pepModel.description)
-                    .font(.caption)
-            }
-            
-        } header: {
-            Text("Practice Evolution Project")
-        }
+    }
+    
+    struct SocialProgressSection: View {
+        @Bindable var model: SocialProgressModel
+        @State var isExpanded = true
         
-        Section {
-            LabeledContent("Points Earned", value: total, format: .number)
-        } header: {
-            Text("Total PEP / SPA")
+        var body: some View {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                LabeledContent("# of events") {
+                    Picker("", selection: $model.numberOfSPAEvents) {
+                        ForEach(model.numberOfEventsOptions, id: \.self) { number in
+                            Text(number, format: .number)
+                                .tag(number)
+                        }
+                    }
+                }
+                
+                LabeledContent("Average hours per event") {
+                    Picker("", selection: $model.averageHoursPerSPAEvent) {
+                        ForEach(model.hoursPerEventOptions, id: \.self) { number in
+                            Text(number, format: .number)
+                                .tag(number)
+                        }
+                    }
+                }
+                
+                LabeledContent("Points Earned", value: model.spaPoints, format: .number)
+                
+                DisclosureGroup("Description") {
+                    Text(model.description)
+                        .font(.caption)
+                }
+                
+            } label: {
+                SectionLabelView(title: "Social Progress Activities", gaugeValue: model.percentCompleted)
+            }
+        }
+    }
+    
+    struct PracticeEvolutionSection: View {
+        @Bindable var model: PracticeEvolutionModel
+        @State var isExpanded = true
+        
+        var body: some View {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                LabeledContent("Smart goal score") {
+                    Picker("", selection: $model.pepSmartGoalScore) {
+                        ForEach(model.smartGoalOptions, id: \.self) { number in
+                            Text(number, format: .number)
+                                .tag(number)
+                        }
+                    }
+                }
+                
+                LabeledContent("Estimated time commitment") {
+                    Picker("", selection: $model.pepTimeCommitment) {
+                        ForEach(model.timeCommitmentOptions, id: \.self) { number in
+                            Text(number, format: .number)
+                                .tag(number)
+                        }
+                    }
+                }
+                
+                LabeledContent("Points Earned", value: model.pepPoints, format: .number)
+                
+                DisclosureGroup("Description") {
+                    Text(model.description)
+                        .font(.caption)
+                }
+                
+            } label: {
+                SectionLabelView(title: "Practice Evolution Project", gaugeValue: model.percentCompleted)
+            }
         }
     }
 }

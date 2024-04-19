@@ -72,6 +72,11 @@ class SocialProgressModel {
         }
     }
     
+    var percentCompleted: Double {
+        Double(spaPoints) / 100
+    }
+    
+    
     var description: LocalizedStringKey {
         """
         Social Progress Activities (SPA), may be a compilation of volunteerism, that has occurred throughout the year. All SPA must be entering into the Department online platform for tracking volunteerism (currently Digital Galaxy). SPA hours logged must be entered no later than the end of the quarter in which they were completed. Examples may include, but are not limited to regularly providing staffing at the Greenville Free Clinic, CPR/emergency response training for church and/or civic groups, health education in the community for seniors/schools, taskforce development of alignment strategies with our community partners (i.e. Epic access for Community organizations), medical directorship of a charitable organization.

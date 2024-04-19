@@ -30,6 +30,10 @@ class VacationModel {
         }
     }
     
+    var percentCompleted: Double {
+        Double(vacationPoints) / 50
+    }
+    
     var description: LocalizedStringKey {
         """
         The Department’s minimum standard is a 9-day vacation block submitted via a form request in Shift Admin. Vacations that are not submitted through the forms function in ShiftAdmin (i.e., High priority requests) will not be recognized for points calculation. Any clinician meeting the minimum standard for this metric will earn 50 VC points.

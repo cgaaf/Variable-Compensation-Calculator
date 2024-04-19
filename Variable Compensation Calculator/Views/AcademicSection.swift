@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AcademicSection: View {
     @Bindable private var model: AcademicProductivityModel
+    @State var isExpanded = true
     
     init(model: AcademicProductivityModel) {
         self.model = model
@@ -16,36 +17,38 @@ struct AcademicSection: View {
     
     var body: some View {
         Section {
-            LabeledContent("Academic RVUs") {
-                TextField("Academic RVUs", value: $model.academicRVUs, format: .number, prompt: Text("aRVUs"))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
-            }
-            
-            VStack(alignment: .leading) {
-                LabeledContent("Points Earned", value: model.academicPoints, format: .number)
-                if let prompt = model.prompt {
-                    Text(prompt)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        .foregroundStyle(.red)
+            DisclosureGroup(isExpanded: $isExpanded) {
+                LabeledContent("Academic RVUs") {
+                    TextField("Academic RVUs", value: $model.academicRVUs, format: .number, prompt: Text("aRVUs"))
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
+                }
+                
+                VStack(alignment: .leading) {
+                    LabeledContent("Points Earned", value: model.academicPoints, format: .number)
+                    if let prompt = model.prompt {
+                        Text(prompt)
+                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                            .foregroundStyle(.red)
+                            .font(.caption)
+                    }
+                    
+                    if let calculation = model.calculation {
+                        Text(calculation)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
+                }
+                
+                DisclosureGroup("Description") {
+                    Text(model.description)
                         .font(.caption)
                 }
                 
-                if let calculation = model.calculation {
-                    Text(calculation)
-                        .multilineTextAlignment(.trailing)
-                        .foregroundColor(.secondary)
-                        .font(.caption)
-                }
+            } label: {
+                SectionLabelView(title: "Academic Productivity", gaugeValue: model.percentCompleted)
             }
-            
-            DisclosureGroup("Description") {
-                Text(model.description)
-                    .font(.caption)
-            }
-            
-        } header: {
-            Text("Academic Productivity")
         }
     }
 }

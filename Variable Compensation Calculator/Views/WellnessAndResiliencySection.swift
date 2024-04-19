@@ -8,57 +8,89 @@
 import SwiftUI
 
 struct WellnessAndResiliencySection: View {
-    @Bindable var activityModel: WARActivityModel
-    @Bindable var vacationModel: VacationModel
+    let activityModel: WARActivityModel
+    let vacationModel: VacationModel
+    
+    @State var isExpanded = true
+    
+    var percentCompleted: Double {
+        (Double(activityModel.warPoints) + Double(vacationModel.vacationPoints)) / 150
+    }
     
     var body: some View {
         Section {
-            LabeledContent("WAR Activities") {
-                TextField("WAR Activities", value: $activityModel.warActivities, format: .number, prompt: Text("Activities"))
-                    .multilineTextAlignment(.trailing)
-                    .keyboardType(.numberPad)
+            DisclosureGroup(isExpanded: $isExpanded) {
+                ActivitySection(model: activityModel)
+                VacationSection(model: vacationModel)
+            } label: {
+                SectionLabelView(title: "Wellness and Resilience", gaugeValue: percentCompleted)
             }
-            
-            VStack(alignment: .leading) {
-                LabeledContent("Points Earned", value: activityModel.warPoints, format: .number)
-                if let prompt = activityModel.prompt {
-                    Text(prompt)
-                        .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
-                        .foregroundStyle(.red)
+        }
+    }
+    
+    struct ActivitySection: View {
+        @Bindable var model: WARActivityModel
+        @State var isExpanded = true
+        
+        var body: some View {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                LabeledContent("WAR Activities") {
+                    TextField("WAR Activities", value: $model.warActivities, format: .number, prompt: Text("Activities"))
+                        .multilineTextAlignment(.trailing)
+                        .keyboardType(.numberPad)
+                }
+                
+                VStack(alignment: .leading) {
+                    LabeledContent("Points Earned", value: model.warPoints, format: .number)
+                    if let prompt = model.prompt {
+                        Text(prompt)
+                            .multilineTextAlignment(/*@START_MENU_TOKEN@*/.leading/*@END_MENU_TOKEN@*/)
+                            .foregroundStyle(.red)
+                            .font(.caption)
+                    }
+                    
+                    if let calculation = model.calculation {
+                        Text(calculation)
+                            .multilineTextAlignment(.trailing)
+                            .foregroundColor(.secondary)
+                            .font(.caption)
+                    }
+                }
+                
+                DisclosureGroup("Description") {
+                    Text(model.description)
                         .font(.caption)
                 }
                 
-                if let calculation = activityModel.calculation {
-                    Text(calculation)
-                        .multilineTextAlignment(.trailing)
-                        .foregroundColor(.secondary)
+            } label: {
+                SectionLabelView(title: "Activities", gaugeValue: model.percentCompleted)
+                    .gaugeStyle(.accessoryLinearCapacity)
+            }
+        }
+    }
+    
+    struct VacationSection: View {
+        @Bindable var model: VacationModel
+        @State var isExpanded = true
+        
+        var body: some View {
+            DisclosureGroup(isExpanded: $isExpanded) {
+                Toggle("Vacation Met", isOn: $model.vacationIsCompleted)
+                DisclosureGroup("Description") {
+                    Text(model.description)
                         .font(.caption)
                 }
+            } label: {
+                SectionLabelView(title: "Vacation", gaugeValue: model.percentCompleted)
+                    .gaugeStyle(.accessoryLinearCapacity)
             }
-            
-            DisclosureGroup("Description") {
-                Text(activityModel.description)
-                    .font(.caption)
-            }
-            
-        } header: {
-            Text("Wellness And Resilience (Activities)")
-        }
-        
-        Section {
-            Toggle("Vacation Met", isOn: $vacationModel.vacationIsCompleted)
-            DisclosureGroup("Description") {
-                Text(vacationModel.description)
-                    .font(.caption)
-            }
-        } header: {
-            Text("Wellness And Resilience (Vacation)")
         }
     }
 }
 
 #Preview {
-    Form {
+    List {
         WellnessAndResiliencySection(activityModel: .init(), vacationModel: .init())
     }
+    .listStyle(.inset)
 }

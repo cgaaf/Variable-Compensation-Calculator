@@ -32,6 +32,10 @@ class ClinicalProductivityModel {
         return _points
     }
     
+    var percentCompleted: Double {
+        Double(clinicalPoints) / 100
+    }
+    
     var prompt: String? {
         guard let rvuPercentile else { return nil }
         switch rvuPercentile {
