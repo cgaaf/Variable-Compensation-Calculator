@@ -10,11 +10,9 @@ import SwiftUI
 struct QualitySection: View {
     @Bindable var model: QualityMeasuresModel
     
-    @State var isExpanded = true
-    
     var body: some View {
         Section {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 LabeledContent("Acute Care Clinical Outcome Score") {
                     TextField("Acute Care Clinical Outcome Score", value: $model.acuteClinicalOutcomeScore, format: .number, prompt: Text("Score"))
                         .multilineTextAlignment(.trailing)

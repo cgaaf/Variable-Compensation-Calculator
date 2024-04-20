@@ -22,6 +22,8 @@ class SocialProgressModel {
         }
     }
     
+    var isExpanded = false
+    
     private let numberOfSPAEventsKey = "NumberOfSPAEvents"
     private let averagehoursPerSPAEventKey = "AverageHoursPerSPAEvent"
     

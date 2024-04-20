@@ -18,6 +18,8 @@ class VacationModel {
     }
     private let vacationIsCompletedKey = "VacationIsCompleted"
     
+    var isExpanded = false
+    
     init(vacationIsCompleted: Bool = false) {
         self.vacationIsCompleted = vacationIsCompleted
     }

@@ -26,14 +26,14 @@ struct WellnessAndResiliencySection: View {
                 SectionLabelView(title: "Wellness and Resilience", gaugeValue: percentCompleted)
             }
         }
+
     }
     
     struct ActivitySection: View {
         @Bindable var model: WARActivityModel
-        @State var isExpanded = true
         
         var body: some View {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 LabeledContent("WAR Activities") {
                     TextField("WAR Activities", value: $model.warActivities, format: .number, prompt: Text("Activities"))
                         .multilineTextAlignment(.trailing)
@@ -71,10 +71,9 @@ struct WellnessAndResiliencySection: View {
     
     struct VacationSection: View {
         @Bindable var model: VacationModel
-        @State var isExpanded = true
         
         var body: some View {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 Toggle("Vacation Met", isOn: $model.vacationIsCompleted)
                 DisclosureGroup("Description") {
                     Text(model.description)

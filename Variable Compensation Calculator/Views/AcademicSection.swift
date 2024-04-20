@@ -9,7 +9,6 @@ import SwiftUI
 
 struct AcademicSection: View {
     @Bindable private var model: AcademicProductivityModel
-    @State var isExpanded = true
     
     init(model: AcademicProductivityModel) {
         self.model = model
@@ -17,7 +16,7 @@ struct AcademicSection: View {
     
     var body: some View {
         Section {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 LabeledContent("Academic RVUs") {
                     TextField("Academic RVUs", value: $model.academicRVUs, format: .number, prompt: Text("aRVUs"))
                         .multilineTextAlignment(.trailing)

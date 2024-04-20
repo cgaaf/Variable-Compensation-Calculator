@@ -18,6 +18,8 @@ class PracticeEvolutionModel {
     }
     private let pepSmartGoalScoreKey = "PEPSmartGoalScore"
     
+    var isExpanded = false
+    
     var pepTimeCommitment: Int = 4 {
         didSet {
             savePEPTimeCommitment()

@@ -18,6 +18,8 @@ class QualityMeasuresModel {
     }
     private let acuteClinicalOutcomeScoreKey = "AcuteClinicalOutcomeScore"
     
+    var isExpanded = false
+    
     var qualityPoints: Int {
         guard let acuteClinicalOutcomeScore else { return 0 }
         guard acuteClinicalOutcomeScore > 50 else { return 0 }

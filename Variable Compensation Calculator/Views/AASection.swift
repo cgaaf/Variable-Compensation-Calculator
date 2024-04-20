@@ -12,7 +12,7 @@ struct AASection: View {
     @State var smartGoalsAvailable: Int = 0
     
     var body: some View {
-        Section {
+        DisclosureGroup {
             LabeledContent("Smart Goals Achieved") {
                 TextField("Smart Goals", value: $smartGoalsAchieved, format: .number.precision(.fractionLength(0)))
                     .multilineTextAlignment(.trailing)
@@ -20,10 +20,10 @@ struct AASection: View {
             }
             
             LabeledContent("Total Smart Goals Available") {
-                TextField("Enter Total Available Smart Goals", value: $smartGoalsAchieved, format: .number.precision(.fractionLength(0)))
+                TextField("Enter Total Available Smart Goals", value: $smartGoalsAvailable, format: .number.precision(.fractionLength(0)))
                     .multilineTextAlignment(.trailing)
             }
-        } header: {
+        } label: {
             Text("Academic & Administrative")
         }
     }

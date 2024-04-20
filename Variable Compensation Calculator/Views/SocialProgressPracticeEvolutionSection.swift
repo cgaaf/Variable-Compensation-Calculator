@@ -39,10 +39,9 @@ struct SocialProgressPracticeEvolutionSection: View {
     
     struct SocialProgressSection: View {
         @Bindable var model: SocialProgressModel
-        @State var isExpanded = true
         
         var body: some View {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 LabeledContent("# of events") {
                     Picker("", selection: $model.numberOfSPAEvents) {
                         ForEach(model.numberOfEventsOptions, id: \.self) { number in
@@ -76,10 +75,9 @@ struct SocialProgressPracticeEvolutionSection: View {
     
     struct PracticeEvolutionSection: View {
         @Bindable var model: PracticeEvolutionModel
-        @State var isExpanded = true
         
         var body: some View {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 LabeledContent("Smart goal score") {
                     Picker("", selection: $model.pepSmartGoalScore) {
                         ForEach(model.smartGoalOptions, id: \.self) { number in

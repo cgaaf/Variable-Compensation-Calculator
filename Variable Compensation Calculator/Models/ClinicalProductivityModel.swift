@@ -16,7 +16,10 @@ class ClinicalProductivityModel {
             saveRVUPercentile()
         }
     }
+    
     private let rvuPercentileKey = "RVUPercentile"
+    
+    var isExpanded = false
     
     init(rvuPercentile: Int? = nil) {
         self.rvuPercentile = rvuPercentile

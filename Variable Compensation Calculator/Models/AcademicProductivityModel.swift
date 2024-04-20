@@ -18,6 +18,8 @@ class AcademicProductivityModel {
     }
     private let academicRVUKey = "AcademicRVUs"
     
+    var isExpanded = false
+    
     init(initialAcademicRVUs: Int? = nil) {
         self.academicRVUs = initialAcademicRVUs
     }

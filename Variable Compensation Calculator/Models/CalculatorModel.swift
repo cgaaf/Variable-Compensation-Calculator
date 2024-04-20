@@ -83,4 +83,46 @@ class CalculatorModel {
         pepModel.loadAll()
         qualityModel.loadAcuteClinicalOutcomeScore()
     }
+    
+    var allCollapsed: Bool {
+        [
+            academicProductivityModel.isExpanded,
+            clinicalProductivityModel.isExpanded,
+            warActivityModel.isExpanded,
+            vacationModel.isExpanded,
+            spaModel.isExpanded,
+            pepModel.isExpanded,
+            qualityModel.isExpanded
+        ].allSatisfy { $0 == false }
+    }
+    
+    func collapseAll() {
+        academicProductivityModel.isExpanded = false
+        clinicalProductivityModel.isExpanded = false
+        warActivityModel.isExpanded = false
+        vacationModel.isExpanded = false
+        spaModel.isExpanded = false
+        pepModel.isExpanded = false
+        qualityModel.isExpanded = false
+    }
+    
+    func expandAll() {
+        academicProductivityModel.isExpanded = true
+        clinicalProductivityModel.isExpanded = true
+        warActivityModel.isExpanded = true
+        vacationModel.isExpanded = true
+        spaModel.isExpanded = true
+        pepModel.isExpanded = true
+        qualityModel.isExpanded = true
+    }
+    
+    func allCollapseToggle() {
+        if allCollapsed {
+            expandAll()
+        } else {
+            collapseAll()
+        }
+    }
+    
+    
 }

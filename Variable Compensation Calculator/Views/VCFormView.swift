@@ -61,9 +61,20 @@ struct VCFormView: View {
         .task {
             calculatorModel.loadAll()
         }
+        .toolbar {
+            Button("Collapse", systemImage: "square.stack.3d.up") {
+                withAnimation {
+                    calculatorModel.allCollapseToggle()
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    VCFormView()
+    NavigationStack {
+        VCFormView()
+            .navigationTitle("Title")
+            .navigationBarTitleDisplayMode(.inline)
+    }
 }

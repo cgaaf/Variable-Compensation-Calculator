@@ -10,7 +10,6 @@ import SwiftUI
 struct ClinicalSection: View {
     @Bindable private var model: ClinicalProductivityModel
     @FocusState private var isFocused: Bool
-    @State private var isExpanded = true
     
     init(model: ClinicalProductivityModel) {
         self.model = model
@@ -18,7 +17,7 @@ struct ClinicalSection: View {
     
     var body: some View {
         Section {
-            DisclosureGroup(isExpanded: $isExpanded) {
+            DisclosureGroup(isExpanded: $model.isExpanded) {
                 LabeledContent("Market Percentile") {
                     TextField("Market Percentile", value: $model.rvuPercentile, format: .number, prompt: Text("Percentile"))
                         .multilineTextAlignment(.trailing)
