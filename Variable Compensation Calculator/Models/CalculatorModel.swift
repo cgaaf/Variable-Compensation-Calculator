@@ -45,25 +45,42 @@ class CalculatorModel {
         }
     }
     
-    
     private var pepSpaPoints: Int {
         let total = spaModel.spaPoints + pepModel.pepPoints
         return min(100, total)
     }
     
-    var academicAndAdministrativeSectionIsVisible: Bool {
-        true
-    }
+    var academicAndAdministrativeSectionIsVisible: Bool { true }
     
-    var totalPoints: Int {
+    var unadjustedEarnedGeneralPoints: Int {
         let domains = [ academicProductivityModel.academicPoints, clinicalProductivityModel.clinicalPoints, warActivityModel.warPoints, vacationModel.vacationPoints, pepSpaPoints, qualityModel.qualityPoints ]
         return domains.reduce(0, +)
+    }
+    
+    var earnedGeneralPoints: Int {
+        Int(Double(unadjustedEarnedGeneralPoints) * (1 - administrativeAcademicFTE))
+    }
+    
+    var earnedAAPoints: Int {
+        academicAdministrativeModel.totalPoints
+    }
+    
+    var totalAvailableGeneralPoints: Int {
+        Int(500 * (1 - administrativeAcademicFTE))
+    }
+    
+    var totalAvailableAAPoints: Int {
+        Int(500 * administrativeAcademicFTE)
+    }
+    
+    var totalEarnedPoints: Int {
+        earnedGeneralPoints + academicAdministrativeModel.totalPoints
     }
     
     var minimumPayment: Double {
         guard let baseSalary else { return 0 }
         let pricePerPoint = (baseSalary * 0.1) / 500
-        return pricePerPoint * Double(totalPoints)
+        return pricePerPoint * Double(unadjustedEarnedGeneralPoints)
     }
     
     func saveBaseSalary() {
@@ -110,31 +127,33 @@ class CalculatorModel {
         ].allSatisfy { $0 == false }
     }
     
-    func collapseAll() {
-        academicProductivityModel.isExpanded = false
-        clinicalProductivityModel.isExpanded = false
-        warActivityModel.isExpanded = false
-        vacationModel.isExpanded = false
-        spaModel.isExpanded = false
-        pepModel.isExpanded = false
-        qualityModel.isExpanded = false
-    }
     
-    func expandAll() {
-        academicProductivityModel.isExpanded = true
-        clinicalProductivityModel.isExpanded = true
-        warActivityModel.isExpanded = true
-        vacationModel.isExpanded = true
-        spaModel.isExpanded = true
-        pepModel.isExpanded = true
-        qualityModel.isExpanded = true
-    }
     
     func allCollapseToggle() {
         if allCollapsed {
             expandAll()
         } else {
             collapseAll()
+        }
+        
+        func collapseAll() {
+            academicProductivityModel.isExpanded = false
+            clinicalProductivityModel.isExpanded = false
+            warActivityModel.isExpanded = false
+            vacationModel.isExpanded = false
+            spaModel.isExpanded = false
+            pepModel.isExpanded = false
+            qualityModel.isExpanded = false
+        }
+        
+        func expandAll() {
+            academicProductivityModel.isExpanded = true
+            clinicalProductivityModel.isExpanded = true
+            warActivityModel.isExpanded = true
+            vacationModel.isExpanded = true
+            spaModel.isExpanded = true
+            pepModel.isExpanded = true
+            qualityModel.isExpanded = true
         }
     }
 }

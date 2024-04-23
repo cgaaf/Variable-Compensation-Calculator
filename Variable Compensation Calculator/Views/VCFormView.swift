@@ -26,7 +26,18 @@ struct VCFormView: View {
                     CustomStepper(value: $calculatorModel.administrativeAcademicFTE)
                         .padding(.trailing, -4)
                     
-                    LabeledContent("Total VC Points", value: calculatorModel.totalPoints, format: .number)
+                    DisclosureGroup {
+                        LabeledContent("General Points Earned", value: calculatorModel.earnedGeneralPoints, format: .number)
+                        LabeledContent("General Points Available", value: calculatorModel.totalAvailableGeneralPoints, format: .number)
+                        
+                        LabeledContent("AA Points Earned", value: calculatorModel.earnedAAPoints, format: .number)
+                        LabeledContent("AA Points Available", value: calculatorModel.totalAvailableAAPoints, format: .number)
+                        
+                        
+                    } label: {
+                        LabeledContent("Total VC Points", value: calculatorModel.totalEarnedPoints, format: .number)
+                    }
+                    
                     LabeledContent("Minimum VC Payment", value: calculatorModel.minimumPayment, format: .currency(code: "USD"))
                 }
                 .id(topID)

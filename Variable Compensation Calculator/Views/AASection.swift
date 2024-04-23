@@ -27,6 +27,8 @@ struct AASection: View {
             
             LabeledContent("Points Earned", value: model.totalPoints, format: .number)
             
+            LabeledContent("Points Available", value: model.pointsAvailable, format: .number)
+            
             
         } label: {
             SectionLabelView(title: "Academic & Administrative", gaugeValue: model.percentCompleted)

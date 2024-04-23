@@ -38,13 +38,14 @@ class AcademicAndAdministrativeModel {
         loadSmartGoalsAchieved()
         loadSmartGoalsAvailable()
     }
-    
-    //    var academicAdministrativePoints: Int {
-    //        // TODO: Implement logic
-    //    }
+
     
     var percentCompleted: Double {
         guard let smartGoalsAchieved, let smartGoalsAvailable else {
+            return 0
+        }
+        
+        guard smartGoalsAvailable > 0 else {
             return 0
         }
         
@@ -53,6 +54,10 @@ class AcademicAndAdministrativeModel {
     
     var totalPoints: Int {
         Int(fteAmount * 500 * percentCompleted)
+    }
+    
+    var pointsAvailable: Int {
+        Int(500 * fteAmount)
     }
     
     
