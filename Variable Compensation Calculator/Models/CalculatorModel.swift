@@ -17,7 +17,7 @@ class CalculatorModel {
     }
     private let baseSalaryKey = "BaseSalary"
     
-    init(baseSalary: Double? = nil, academicProductivityModel: AcademicProductivityModel = AcademicProductivityModel(), clinicalProductivityModel: ClinicalProductivityModel = ClinicalProductivityModel(), warActivityModel: WARActivityModel = WARActivityModel(), vacationModel: VacationModel = VacationModel(), spaModel: SocialProgressModel = SocialProgressModel(), pepModel: PracticeEvolutionModel = PracticeEvolutionModel(), qualityModel: QualityMeasuresModel = QualityMeasuresModel()) {
+    init(baseSalary: Double? = nil, academicProductivityModel: AcademicProductivityModel = AcademicProductivityModel(), clinicalProductivityModel: ClinicalProductivityModel = ClinicalProductivityModel(), warActivityModel: WARActivityModel = WARActivityModel(), vacationModel: VacationModel = VacationModel(), spaModel: SocialProgressModel = SocialProgressModel(), pepModel: PracticeEvolutionModel = PracticeEvolutionModel(), qualityModel: QualityMeasuresModel = QualityMeasuresModel(), academicAdministrativeModel: AcademicAndAdministrativeModel = .init(fteAmount: 0)) {
         self.baseSalary = baseSalary
         self.academicProductivityModel = academicProductivityModel
         self.clinicalProductivityModel = clinicalProductivityModel
@@ -26,6 +26,7 @@ class CalculatorModel {
         self.spaModel = spaModel
         self.pepModel = pepModel
         self.qualityModel = qualityModel
+        self.academicAdministrativeModel = academicAdministrativeModel
     }
     
     var academicProductivityModel: AcademicProductivityModel
@@ -35,10 +36,23 @@ class CalculatorModel {
     var spaModel: SocialProgressModel
     var pepModel: PracticeEvolutionModel
     var qualityModel: QualityMeasuresModel
+    var academicAdministrativeModel: AcademicAndAdministrativeModel
     
-    var pepSpaPoints: Int {
+    
+    var administrativeAcademicFTE: Double = 0 {
+        willSet {
+            self.academicAdministrativeModel = .init(fteAmount: newValue)
+        }
+    }
+    
+    
+    private var pepSpaPoints: Int {
         let total = spaModel.spaPoints + pepModel.pepPoints
         return min(100, total)
+    }
+    
+    var academicAndAdministrativeSectionIsVisible: Bool {
+        true
     }
     
     var totalPoints: Int {
@@ -123,6 +137,5 @@ class CalculatorModel {
             collapseAll()
         }
     }
-    
-    
 }
+

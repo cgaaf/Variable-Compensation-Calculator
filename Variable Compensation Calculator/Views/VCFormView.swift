@@ -21,16 +21,22 @@ struct VCFormView: View {
                             .keyboardType(.decimalPad)
                         
                     }
-                    LabeledContent("Academic & Administrative FTE") {
-                        TextField("Buydown", value: .constant(0), format: .number.precision(.fractionLength(0...2)))
-                            .multilineTextAlignment(.trailing)
-                        
-                        
-                    }
+                    
+                   
+                    CustomStepper(value: $calculatorModel.administrativeAcademicFTE)
+                        .padding(.trailing, -4)
+                    
                     LabeledContent("Total VC Points", value: calculatorModel.totalPoints, format: .number)
                     LabeledContent("Minimum VC Payment", value: calculatorModel.minimumPayment, format: .currency(code: "USD"))
                 }
                 .id(topID)
+                .onChange(of: calculatorModel.administrativeAcademicFTE) { oldValue, newValue in
+                    print(newValue)
+                }
+                
+                if calculatorModel.administrativeAcademicFTE > 0 {
+                    AASection(model: calculatorModel.academicAdministrativeModel)
+                }
                 
                 ClinicalSection(model: calculatorModel.clinicalProductivityModel)
                 AcademicSection(model: calculatorModel.academicProductivityModel)
