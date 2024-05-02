@@ -79,8 +79,10 @@ class CalculatorModel {
     
     var minimumPayment: Double {
         guard let baseSalary else { return 0 }
-        let pricePerPoint = (baseSalary * 0.1) / 500
-        return pricePerPoint * Double(unadjustedEarnedGeneralPoints)
+        // Percent of base salary for calculating variable compensation contribution.
+        let percentAtRisk = 0.1
+        let pricePerPoint = (baseSalary * percentAtRisk) / 500
+        return pricePerPoint * Double(totalEarnedPoints)
     }
     
     func saveBaseSalary() {

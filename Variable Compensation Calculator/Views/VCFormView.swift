@@ -36,9 +36,11 @@ struct VCFormView: View {
                         
                     } label: {
                         LabeledContent("Total VC Points", value: calculatorModel.totalEarnedPoints, format: .number)
+                            .animation(.none, value: calculatorModel.totalEarnedPoints)
                     }
                     
                     LabeledContent("Minimum VC Payment", value: calculatorModel.minimumPayment, format: .currency(code: "USD"))
+                        .animation(.none, value: calculatorModel.minimumPayment)
                 }
                 .id(topID)
                 .onChange(of: calculatorModel.administrativeAcademicFTE) { oldValue, newValue in

@@ -18,6 +18,7 @@ struct CustomStepper: View {
                 StepperButton(title: "Minus", systemImage: "minus", action: onDecrement)
                 Text(value, format: .number)
                     .frame(width: 40)
+                    .animation(.none, value: value)
                 StepperButton(title: "Plus", systemImage: "plus", action: onIncrement)
                 
             }
