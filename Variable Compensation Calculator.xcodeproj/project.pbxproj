@@ -24,6 +24,7 @@
 		C25E58672AE6F1F0001A4277 /* QualitySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E58662AE6F1F0001A4277 /* QualitySection.swift */; };
 		C25E7E942AE051EE005615D1 /* AcademicSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7E932AE051EE005615D1 /* AcademicSection.swift */; };
 		C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */; };
+		C26E0DA12BE41DC700896843 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C26E0DA02BE41DC700896843 /* README.md */; };
 		C28016FD2B0E8BAD007F2E3B /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = C28016FC2B0E8BAD007F2E3B /* PrivacyInfo.xcprivacy */; };
 		C2BCAC242AE0B1E000CA2C31 /* ClinicalProductivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */; };
 		C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BCAC252AE0B34400CA2C31 /* ClinicalSection.swift */; };
@@ -55,6 +56,8 @@
 		C25E58662AE6F1F0001A4277 /* QualitySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualitySection.swift; sourceTree = "<group>"; };
 		C25E7E932AE051EE005615D1 /* AcademicSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicSection.swift; sourceTree = "<group>"; };
 		C25E7E952AE05335005615D1 /* AcademicProductivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicProductivityModel.swift; sourceTree = "<group>"; };
+		C26E0DA02BE41DC700896843 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		C26E0DA22BE41E3500896843 /* Privacy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Privacy.md; sourceTree = "<group>"; };
 		C28016FB2B0E8B33007F2E3B /* Variable-Compensation-Calculator-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Variable-Compensation-Calculator-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C28016FC2B0E8BAD007F2E3B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		C2BCAC232AE0B1E000CA2C31 /* ClinicalProductivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicalProductivityModel.swift; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				C200F59C2ACB900500601221 /* ContentView.swift */,
 				C200F59E2ACB900600601221 /* Assets.xcassets */,
 				C200F5A02ACB900600601221 /* Preview Content */,
+				C26E0DA02BE41DC700896843 /* README.md */,
+				C26E0DA22BE41E3500896843 /* Privacy.md */,
 			);
 			path = "Variable Compensation Calculator";
 			sourceTree = "<group>";
@@ -230,6 +235,7 @@
 			files = (
 				C28016FD2B0E8BAD007F2E3B /* PrivacyInfo.xcprivacy in Resources */,
 				C200F5A22ACB900600601221 /* Preview Assets.xcassets in Resources */,
+				C26E0DA12BE41DC700896843 /* README.md in Resources */,
 				C200F59F2ACB900600601221 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
