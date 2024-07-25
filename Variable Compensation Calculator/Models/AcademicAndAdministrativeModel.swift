@@ -13,13 +13,13 @@ import OSLog
 class AcademicAndAdministrativeModel {
     var fteAmount: Double
     
-    var smartGoalsAchieved: Int? {
+    var smartGoalsAchieved: Double? {
         didSet {
             saveSmartGoalsAchieved()
         }
     }
     
-    var smartGoalsAvailable: Int? {
+    var smartGoalsAvailable: Double? {
         didSet {
             saveSmartGoalsAvailable()
         }
@@ -30,7 +30,7 @@ class AcademicAndAdministrativeModel {
     
     var isExpanded = false
     
-    init(fteAmount: Double, smartGoalsAchieved: Int? = nil, smartGoalsAvailable: Int? = nil) {
+    init(fteAmount: Double, smartGoalsAchieved: Double? = nil, smartGoalsAvailable: Double? = 5) {
         self.fteAmount = fteAmount
         self.smartGoalsAchieved = smartGoalsAchieved
         self.smartGoalsAvailable = smartGoalsAvailable
@@ -45,15 +45,13 @@ class AcademicAndAdministrativeModel {
             return 0
         }
         
-        guard smartGoalsAvailable > 0 else {
-            return 0
-        }
-        
-        return Double(smartGoalsAchieved) / Double(smartGoalsAvailable)
+        return smartGoalsAchieved / smartGoalsAvailable
     }
     
     var totalPoints: Int {
-        Int(fteAmount * 500 * percentCompleted)
+        let total = fteAmount * 500 * percentCompleted
+        let rounded = total.rounded(.toNearestOrAwayFromZero)
+        return Int(rounded)
     }
     
     var pointsAvailable: Int {
@@ -83,7 +81,7 @@ class AcademicAndAdministrativeModel {
     
     func loadSmartGoalsAchieved() {
         Logger.model.info("Loading saved from key: \(self.smartGoalsAchievedKey)")
-        if let goalsAchieved = UserDefaults.standard.value(forKey: smartGoalsAchievedKey) as? Int {
+        if let goalsAchieved = UserDefaults.standard.value(forKey: smartGoalsAchievedKey) as? Double {
             self.smartGoalsAchieved = goalsAchieved
         }
         
@@ -94,7 +92,7 @@ class AcademicAndAdministrativeModel {
         Logger.model.info("Loading saved from key: \(self.smartGoalsAvailableKey)")
 //        self.smartGoalsAvailable = UserDefaults.standard.object(forKey: smartGoalsAvailableKey) as? Int
         
-        if let goalsAvailable = UserDefaults.standard.object(forKey: smartGoalsAvailableKey) as? Int {
+        if let goalsAvailable = UserDefaults.standard.object(forKey: smartGoalsAvailableKey) as? Double {
             self.smartGoalsAvailable = goalsAvailable
         }
     }

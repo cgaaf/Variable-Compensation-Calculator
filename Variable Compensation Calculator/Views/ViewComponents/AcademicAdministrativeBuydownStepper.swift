@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct CustomStepper: View {
+struct AcademicAdministrativeBuydownStepper: View {
     @Binding var value: Double
-    let step: Double = 0.05
+    let step: Double = 0.01
     let range: ClosedRange<Double> = 0 ... 0.75
     
     var body: some View {
@@ -67,6 +67,6 @@ struct CustomStepper: View {
 #Preview {
     @State var value = 1.0
     return List {
-        CustomStepper(value: $value)
+        AcademicAdministrativeBuydownStepper(value: $value)
     }
 }

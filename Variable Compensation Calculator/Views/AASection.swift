@@ -12,19 +12,20 @@ struct AASection: View {
     
     var body: some View {
         DisclosureGroup {
-            LabeledContent("Smart Goals Achieved") {
-                TextField("Smart Goals", value: $model.smartGoalsAchieved, format: .number.precision(.fractionLength(0)))
+            LabeledContent("Smart Goal Composite Score") {
+                TextField("Smart Goals", value: $model.smartGoalsAchieved, format: .number.precision(.fractionLength(2)))
                     .multilineTextAlignment(.trailing)
                     .fixedSize()
             }
             
             LabeledContent("Total Smart Goals Available") {
-                TextField("Enter Total Available Smart Goals", value: $model.smartGoalsAvailable, format: .number.precision(.fractionLength(0)))
-                    .multilineTextAlignment(.trailing)
+//                TextField("Enter Total Available Smart Goals", value: $model.smartGoalsAvailable, format: .number.precision(.fractionLength(0)))
+//                    .multilineTextAlignment(.trailing)
+                Text(5, format: .number)
             }
             
             LabeledContent("FTE Amount", value: model.fteAmount, format: .number)
-            
+
             LabeledContent("Points Earned", value: model.totalPoints, format: .number)
             
             LabeledContent("Points Available", value: model.pointsAvailable, format: .number)

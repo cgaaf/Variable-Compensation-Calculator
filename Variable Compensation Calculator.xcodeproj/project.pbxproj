@@ -13,7 +13,7 @@
 		C200F5A22ACB900600601221 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C200F5A12ACB900600601221 /* Preview Assets.xcassets */; };
 		C20C42382AEAE8F200AB4F7B /* CalculatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C42372AEAE8F200AB4F7B /* CalculatorModel.swift */; };
 		C20C423B2AEAEBC700AB4F7B /* OSLog+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C20C423A2AEAEBC700AB4F7B /* OSLog+Extensions.swift */; };
-		C24522262BD42B2C004E0FB6 /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24522252BD42B2C004E0FB6 /* CustomStepper.swift */; };
+		C24522262BD42B2C004E0FB6 /* AcademicAdministrativeBuydownStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24522252BD42B2C004E0FB6 /* AcademicAdministrativeBuydownStepper.swift */; };
 		C24522282BD7F1EC004E0FB6 /* AcademicAndAdministrativeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24522272BD7F1EC004E0FB6 /* AcademicAndAdministrativeModel.swift */; };
 		C245222A2BD80713004E0FB6 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C24522292BD80713004E0FB6 /* Double+Extensions.swift */; };
 		C251BF2C2BD18C850082F8F2 /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C251BF2B2BD18C850082F8F2 /* Styles.swift */; };
@@ -45,7 +45,7 @@
 		C200F5A12ACB900600601221 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C20C42372AEAE8F200AB4F7B /* CalculatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorModel.swift; sourceTree = "<group>"; };
 		C20C423A2AEAEBC700AB4F7B /* OSLog+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OSLog+Extensions.swift"; sourceTree = "<group>"; };
-		C24522252BD42B2C004E0FB6 /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
+		C24522252BD42B2C004E0FB6 /* AcademicAdministrativeBuydownStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicAdministrativeBuydownStepper.swift; sourceTree = "<group>"; };
 		C24522272BD7F1EC004E0FB6 /* AcademicAndAdministrativeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcademicAndAdministrativeModel.swift; sourceTree = "<group>"; };
 		C24522292BD80713004E0FB6 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		C251BF2B2BD18C850082F8F2 /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				C251BF2E2BD2CD1D0082F8F2 /* SectionLabelView.swift */,
-				C24522252BD42B2C004E0FB6 /* CustomStepper.swift */,
+				C24522252BD42B2C004E0FB6 /* AcademicAdministrativeBuydownStepper.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				C2BCAC302AE18C8800CA2C31 /* SocialProgressModel.swift in Sources */,
 				C25E7E962AE05335005615D1 /* AcademicProductivityModel.swift in Sources */,
 				C2E0F4062AFAAAA300A92FCA /* VCFormView.swift in Sources */,
-				C24522262BD42B2C004E0FB6 /* CustomStepper.swift in Sources */,
+				C24522262BD42B2C004E0FB6 /* AcademicAdministrativeBuydownStepper.swift in Sources */,
 				C2BCAC322AE2C53200CA2C31 /* SocialProgressPracticeEvolutionSection.swift in Sources */,
 				C2BCAC262AE0B34500CA2C31 /* ClinicalSection.swift in Sources */,
 				C20C423B2AEAEBC700AB4F7B /* OSLog+Extensions.swift in Sources */,
@@ -402,7 +402,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Variable Compensation Calculator/Preview Content\"";
 				DEVELOPMENT_TEAM = 79KCMPKE2A;
 				ENABLE_PREVIEWS = YES;
@@ -418,7 +418,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cgaafary.DEM-VC-Estimator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -437,7 +437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"Variable Compensation Calculator/Preview Content\"";
 				DEVELOPMENT_TEAM = 79KCMPKE2A;
 				ENABLE_PREVIEWS = YES;
@@ -453,7 +453,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.cgaafary.DEM-VC-Estimator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

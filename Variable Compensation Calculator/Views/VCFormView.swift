@@ -23,7 +23,7 @@ struct VCFormView: View {
                     }
                     
                    
-                    CustomStepper(value: $calculatorModel.administrativeAcademicFTE)
+                    AcademicAdministrativeBuydownStepper(value: $calculatorModel.administrativeAcademicFTE)
                         .padding(.trailing, -4)
                     
                     DisclosureGroup {
